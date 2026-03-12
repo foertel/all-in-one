@@ -5,8 +5,8 @@
             "display_name": "OpenSearch",
             "documentation": "https://github.com/nextcloud/all-in-one/tree/main/community-containers/opensearch",
             "image": "opensearchproject/opensearch",
-            "image_tag": "2.19.1",
-            "internal_port": "19200",
+            "image_tag": "2.19.4",
+            "internal_port": "9200",
             "restart": "unless-stopped",
             "environment": [
                 "TZ=%TIMEZONE%",
@@ -14,8 +14,7 @@
                 "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m",
                 "DISABLE_SECURITY_PLUGIN=true",
                 "cluster.name=nextcloud-aio",
-                "logger.level=WARN",
-                "http.port=19200",
+                "logger.level=ERROR",
                 "bootstrap.memory_lock=false"
             ],
             "volumes": [
