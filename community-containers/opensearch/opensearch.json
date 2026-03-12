@@ -1,0 +1,33 @@
+{
+    "aio_services_v1": [
+        {
+            "container_name": "nextcloud-aio-opensearch",
+            "display_name": "OpenSearch",
+            "documentation": "https://github.com/nextcloud/all-in-one/tree/main/community-containers/opensearch",
+            "image": "opensearchproject/opensearch",
+            "image_tag": "2.19.1",
+            "internal_port": "19200",
+            "restart": "unless-stopped",
+            "environment": [
+                "TZ=%TIMEZONE%",
+                "discovery.type=single-node",
+                "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m",
+                "DISABLE_SECURITY_PLUGIN=true",
+                "cluster.name=nextcloud-aio",
+                "logger.level=WARN",
+                "http.port=19200",
+                "bootstrap.memory_lock=false"
+            ],
+            "volumes": [
+                {
+                    "source": "nextcloud_aio_opensearch",
+                    "destination": "/usr/share/opensearch/data",
+                    "writeable": true
+                }
+            ],
+            "backup_volumes": [
+                "nextcloud_aio_opensearch"
+            ]
+        }
+    ]
+}
